@@ -304,12 +304,16 @@ function! novim_mode#ClosePane()
   endif
 endfunction
 
-" TODO: Mention any unsaved buffers
 function! novim_mode#ExitVim()
-  let l:confirmed = confirm('Do you really want to quit Vim?', "&Yes\n&No", 2)
-  if l:confirmed == 1
+  let l:buffer_check=execute(":ls")
+
+  if l:buffer_check =~ "+"
+    let l:confirmed = confirm('There are unsaved buffers, wanna exit?', "&Yes\n&No", 2)
+    if l:confirmed == 1
+      quitall!
+    endif
+  else
     quitall!
-  endif
 endfunction
 
 function! novim_mode#GotoLine()

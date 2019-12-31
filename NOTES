@@ -1,0 +1,6 @@
+ask only to confirm when having open buffers
+x> if lines that have a "+" there are unsaved buffers and launch an confirm
+-> else just exit
+-> suport an "enter" key for confiriming
+
+
